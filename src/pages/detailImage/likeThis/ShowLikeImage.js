@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './ShowImage.css';
 import { FaDownload } from 'react-icons/fa';
 import { FaArrowRight } from 'react-icons/fa';
 import {
     Link
   } from "react-router-dom";
+import './ShowLikeImage.css';
 
-class ShowImage extends Component {
+class ShowLikeImage extends Component {
     render() {
         const { data: { src } } = this.props;
         return (
@@ -40,4 +40,4 @@ class ShowImage extends Component {
     }
 }
 
-export default ShowImage;
+export default ShowLikeImage;

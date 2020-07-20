@@ -1,0 +1,33 @@
+.back-home a i {
+   padding: 14px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.back-home a {
+    font-size: 18px ;
+    font-weight: 600;
+    text-decoration: none !important;
+    color: black;
+    position: fixed;
+    margin-left: 20px;
+}
+
+.back-home a:hover i {
+    background-color: #E2E2E2;
+}
+
+.back-home a:hover {
+    color: black;
+}
+
+.back-home {
+    text-align: left;
+}
+
+/* responsive */
+@media (max-width:991px) {
+    .back-home a span {
+        display: none;
+    }
+}

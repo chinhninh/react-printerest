@@ -1,0 +1,200 @@
+.right-info {
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+/* upload */
+.upload {
+    text-decoration: none !important;
+    color: black;
+}
+
+.upload i {
+    font-size: 18px;
+    padding: 14px;
+    border-radius: 100%;
+}
+
+.upload i:hover {
+    background-color: #E2E2E2;
+    color: black;
+}
+
+/* website */
+.website {
+    margin-top: 30px;
+}
+
+.website a {
+    text-decoration: underline ;
+    color: black;
+    margin-top: 40px;
+}
+
+/* watch live */
+.watch-live a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.watch-live h1 {
+    font-weight: 600;
+}
+
+.watch-live {
+    margin-top: 15px;
+}
+
+/* description */
+.description {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* btn comment */
+.btn-comment {
+    margin-top: 40px;
+}
+
+.btn-comment span {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.btn-comment i {
+    margin-left: 10px;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+/* content comment */
+.title-share {
+    font-size: 12px;
+    margin-top: 30px;
+    margin-bottom: 2px;
+}
+
+.form-comment i {
+    font-size: 45px;
+    color: #afafaf;
+}
+
+.form-comment input {
+    width: 82% !important;
+    margin-left: 20px;
+    border-radius: 20px;
+    height: 45px;
+    margin-top: 5px;
+}
+
+/* comment of user */
+.avatar-user {
+    font-size: 30px;
+    color: #afafaf;
+}
+
+.comment-of-user {
+    margin-top: 20px;
+}
+
+.save-to {
+    margin: 0 5px;
+}
+
+.title-comment {
+    font-size: 14px;
+    line-height: 6px;
+    margin-top: 14px;
+    margin-left: 10px;
+}
+
+.title-comment a {
+    text-decoration: none;
+    font-weight: 600;
+    color: black !important;
+}
+
+/* btn save */
+.save {
+    position: absolute;
+    top: -3px;
+    right: 17px;
+}
+
+.save2 {
+    animation-iteration-count: infinite;
+    outline: none;
+    box-shadow: none;
+    height: 135px;
+    width: 135px;
+    top: -46px;
+    right: -37px;
+    position: absolute;
+}
+
+.DgX {
+    animation-duration: 5s;
+    animation-iteration-count: inherit;
+    animation-name: wD9;
+    border: 8px solid #0074e8;
+    border-radius: 50%;
+    height: 100%;
+    opacity: 1;
+    width: 100%;
+}
+
+.uWM {
+    animation-delay: .8s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-name: B0Z;
+    opacity: 0;
+}
+
+@keyframes wD9 {
+    0% {
+        opacity: 0;
+        transform: scale(.8);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(.8);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    80% {
+        opacity: 0;
+        transform: scale(.8);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.save a {
+    position: absolute;
+    text-decoration: none !important;
+    color: white !important;
+    width: 60px;
+    height: 35px;
+    border-radius: 18px;
+    background-color: #E60023;
+    text-align: center;
+    line-height: 35px;
+    right: 0;
+}
+
+/* responsive */
+@media (max-width:991px) {
+    /* .right-info {
+        margin-top: 30px;
+    } */
+}
