@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 import './RightInfo.css';
 import { FaUpload, FaChevronRight, FaChevronDown, FaUserCircle } from 'react-icons/fa';
 import { Media } from 'react-bootstrap';
+import { connect } from "react-redux";
+import { SHOW_FORM_COMMENT } from '../../../../../redux/actions/showFormComment/actionType';
 
 class RightInfo extends Component {
     render() {
+        const { stateShowFormComment, toggleShowFormComment } = this.props;
+        const iconBtnComment = (stateShowFormComment? <i><FaChevronRight /></i>: <i><FaChevronDown /></i>)
         return (
             <div className="col-lg-6 col-12 right-info">
                 <div className="save">
-                                <a href="#">
-                                save
+                    <a href="#">
+                        save
                     <div className="save2">
-                        <div className="DgX">
-                            <div className="uWM">
+                            <div className="DgX">
+                                <div className="uWM">
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </a>
                 </div>
                 <a href="" className="upload">
@@ -42,18 +46,22 @@ class RightInfo extends Component {
                 </p>
                 <div>
                     <div className="btn-comment">
-                        <span>Comments</span>
-                        <i><FaChevronDown /></i>
+                        <button className="btn" onClick={toggleShowFormComment}>
+                            <span>Comments</span>
+                            {iconBtnComment}
+                        </button>
                     </div>
                     <div>
-                        <p className="title-share">
-                            Share feedback, ask a question or give a high five
-                        </p>
-                        <div>
-                            <form className="form-inline form-comment">
-                                <label for="comment"><i className="avatar-user-input"><FaUserCircle /></i></label>
-                                <input type="text" className="form-control " placeholder="Add a comment" id="comment" />
-                            </form>
+                        <div className={`${stateShowFormComment? "show-form-comment": "hide-form-comment"}`}>
+                            <p className="title-share">
+                                Share feedback, ask a question or give a high five
+                            </p>
+                            <div>
+                                <form className="form-inline form-comment">
+                                    <label for="comment"><i className="avatar-user-input"><FaUserCircle /></i></label>
+                                    <input type="text" className="form-control " placeholder="Add a comment" id="comment" />
+                                </form>
+                            </div>
                         </div>
                         <div className="comment-of-user">
                             <Media>
@@ -87,4 +95,16 @@ class RightInfo extends Component {
     }
 }
 
-export default RightInfo;
+const mapStateToProps = (state) => {
+    return {
+        stateShowFormComment: state.showFormComment.state
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleShowFormComment: () => dispatch({ type: SHOW_FORM_COMMENT })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RightInfo);

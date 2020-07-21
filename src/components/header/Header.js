@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import './Header.css';
 import { FaPinterest, FaSearch, FaBell, FaComment, FaUser } from 'react-icons/fa';
-
+import {Link} from 'react-router-dom';
 class Header extends Component {
     render() {
-        const search = (
-            <div>
-                <i><FaSearch /></i>
-                <span>Search</span>
-            </div>
-        )
         return (
             <div className="header">
                 <div className="row">
@@ -19,9 +13,9 @@ class Header extends Component {
                                 <i ><FaPinterest /></i>
                             </li>
                             <li className="btn-home">
-                                <a href="#">
+                                <Link to="/">
                                     Home
-                                </a>
+                                </Link>
                             </li>
                             <li className="btn-following">
                                 <a href="#">

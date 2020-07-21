@@ -57,6 +57,11 @@
     margin-top: 40px;
 }
 
+.btn-comment button {
+    outline: none;
+    border: none;
+}
+
 .btn-comment span {
     font-size: 22px;
     font-weight: 700;
@@ -69,6 +74,14 @@
 }
 
 /* content comment */
+.show-form-comment {
+    display: block;
+}
+
+.hide-form-comment {
+    display: none;
+}
+
 .title-share {
     font-size: 12px;
     margin-top: 30px;

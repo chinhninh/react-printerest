@@ -15,7 +15,7 @@ class LikeThis extends Component {
 
         return (
             <div className="">
-                <div className="content-body">
+                <div className="content-body content-body-1">
                     <Masonry
                         // Provides the data for our grid items
                         items={items}
