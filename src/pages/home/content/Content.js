@@ -3,9 +3,20 @@ import Cat from '../../../images/Cat';
 import { Masonry } from "masonic";
 import ShowImage from './ShowImage';
 import './Content.css';
+import {connect} from 'react-redux';
+import {GET_SIZE_IMAGE_REQUEST} from '../../../redux/actions/image/getSizeImage/actionType';
 
 class Content extends Component {
+    componentDidMount(){
+        const {dataSearchImage, getDataSizeImage} = this.props;
+        // console.log("test",dataSearchImage)
+        // const id_Image = dataSearchImage
+        getDataSizeImage()
+    }
+
     render() {
+        const {dataSearchImage, getDataSizeImage} = this.props;
+        console.log("test",dataSearchImage)
 
         const items = (
             Array.from(Array(5000), () => ({
@@ -38,4 +49,17 @@ class Content extends Component {
 const randomChoice = items => items[Math.floor(Math.random() * items.length)];
 let i = 0;
 
-export default Content;
+const mapStateToProps = (state) => {
+    return {
+        dataSizeImage: state.getSizeImage.data,
+        dataSearchImage: state.searchImage.data
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getDataSizeImage: () => dispatch({type:GET_SIZE_IMAGE_REQUEST})
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Content);
