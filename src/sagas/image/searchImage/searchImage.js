@@ -9,6 +9,10 @@ export function* searchImage() {
 }
 
 const getSearchImage = (valueSearch) => {
+    // var config = {
+    //     headers: {'Access-Control-Allow-Origin': '*'}
+    // }
+    // const linkSearchImage = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${ApiKey}&text=${valueSearch}&format=json`
     const linkSearchImage = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${ApiKey}&text=${valueSearch}&format=json&nojsoncallback=1`;
 
     return axios({
@@ -17,13 +21,19 @@ const getSearchImage = (valueSearch) => {
     })
     .then(response => response.data)
     .catch(error => console.log(error))
+
+    // return fetch(linkSearchImage, {
+    //     method: "GET"
+    // })
+    // .then(response => response.json())
+    // .catch(error => console.log(error))
 }
 
 function* searchImageSaga(searchImageAction) {
     try {
         const dataSearchImage = yield call(getSearchImage, searchImageAction.payload);
-        // console.log(dataSearchImage)
-        yield put(searchImageSuccess(dataSearchImage))
+        // console.log(dataSearchImage.photos.photo)
+        yield put(searchImageSuccess(dataSearchImage.photos))
         
     } catch (error) {
         yield put(searchImageError(error))

@@ -9,14 +9,23 @@ import {GET_SIZE_IMAGE_REQUEST} from '../../../redux/actions/image/getSizeImage/
 class Content extends Component {
     componentDidMount(){
         const {dataSearchImage, getDataSizeImage} = this.props;
-        // console.log("test",dataSearchImage)
-        // const id_Image = dataSearchImage
+        const idImage = dataSearchImage.photo
+        console.log(idImage)
         getDataSizeImage()
+        console.log("asdas")
     }
 
     render() {
-        const {dataSearchImage, getDataSizeImage} = this.props;
-        console.log("test",dataSearchImage)
+        const {dataSearchImage, getDataSizeImage,loading} = this.props;
+        // var data = dataSearchImage.photos
+        // if(typeof(dataSearchImage.photos.photo) !== undefined){
+        //     console.log(data.photo)
+            
+            
+        // }else{
+        //     console.log('chua co')
+        // }
+        
 
         const items = (
             Array.from(Array(5000), () => ({
@@ -52,7 +61,8 @@ let i = 0;
 const mapStateToProps = (state) => {
     return {
         dataSizeImage: state.getSizeImage.data,
-        dataSearchImage: state.searchImage.data
+        dataSearchImage: state.searchImage.data,
+        loading: state.searchImage.loading
     }
 }
 

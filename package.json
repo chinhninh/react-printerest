@@ -8,6 +8,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "history": "^5.0.0",
     "masonic": "^3.3.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

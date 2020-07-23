@@ -18,7 +18,7 @@
     width: 100% !important;
 }
 
-.style-search button {
+.style-search a {
   position: absolute;
   right: 0;
 }

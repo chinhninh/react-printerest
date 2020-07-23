@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
+import history from './History.js';
 import App from './App';
 import './index.css';
 import allReducers from './redux/reducers/index';
@@ -16,7 +18,9 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store = {store}>
+  <HashRouter history={history} basename="/">
     <App />
+    </HashRouter>
   </Provider>,
   document.getElementById('root')
 );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/header/Header';
 import Home from './pages/home/Home';
 import DetailImage from './pages/detailImage/DetailImage';
+import Loading from './components/loading/Loading';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {
@@ -10,9 +11,15 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import {connect} from 'react-redux';
 
 class App extends Component {
   render() {
+    const {dataSearchImage,loadingSearchImage} = this.props;
+    // console.log("loading: ",dataSearchImage)
+    const body = (
+      loadingSearchImage ? <Loading/> : <Home />
+    )
     return (
       <Router>
         <div className="printerest">
@@ -22,8 +29,11 @@ class App extends Component {
             <Route path="/detail-image">
               <DetailImage />
             </Route>
+            <Route path="/search">
+             {body}
+            </Route>
             <Route path="/">
-              <Home />
+             <div></div>
             </Route>
           </Switch>
 
@@ -34,4 +44,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    loadingSearchImage: state.searchImage.loading,
+    dataSearchImage: state.searchImage.data
+  }
+}
+
+const maDispatchToProps = (dispatch) => {
+
+}
+
+export default connect(mapStateToProps,maDispatchToProps)(App);

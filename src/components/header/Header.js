@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './Header.css';
 import { FaPinterest, FaSearch, FaBell, FaComment, FaUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, NavLink,withRouter  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SEARCH_IMAGE_REQUEST } from '../../redux/actions/image/searchImage/actionType';
+import { GET_SIZE_IMAGE_REQUEST } from '../../redux/actions/image/getSizeImage/actionType';
 
 class Header extends Component {
     constructor(props){
@@ -13,11 +14,11 @@ class Header extends Component {
                 value: ""
             }
         }
-        this.changeInput = this.changeInput.bind(this)
+        this.changeInput = this.changeInput.bind(this);
         this.getDataSearch = this.getDataSearch.bind(this)
     }
 
-    changeInput(event){
+    changeInput(event) {
         this.setState({
             searchImage: {
                 value: event.target.value
@@ -27,6 +28,7 @@ class Header extends Component {
 
     getDataSearch = (event) => {
         event.preventDefault();
+        this.props.history.push('/search');
         const {getDataSearchImage} = this.props;
         const {searchImage} = this.state;
         const valueSearch = searchImage.value
@@ -34,9 +36,9 @@ class Header extends Component {
     }
 
     render() {
-        const { dataSearchImage } = this.props;
+        const { dataSearchImage,loading,getDataSizeImage } = this.props;
         const {searchImage} = this.state
-        console.log("longtest: ", dataSearchImage)
+        // console.log("long test: ",loading)
 
         return (
             <div className="header">
@@ -52,15 +54,15 @@ class Header extends Component {
                                 </Link>
                             </li>
                             <li className="btn-following">
-                                <a href="#">
+                                <Link onClick={getDataSizeImage}>
                                     Following
-                                </a>
+                                </Link>
                             </li>
                             {/* form search */}
                             <li className="style-search">
-                                <form className="form-inline" onSubmit={this.getDataSearch}>
+                                <form to="/search" className="form-inline" onSubmit={this.getDataSearch}>
                                     <input onChange={this.changeInput} value={searchImage.value} type="text" className="form-control" placeholder="search" id="search" />
-                                    <button type="submit" className="btn"><FaSearch/></button>
+                                    <Link to="/search" onClick={this.getDataSearch} className="btn"><FaSearch/></Link>
                                 </form>
                             </li>
                         </ul>
@@ -92,14 +94,16 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        dataSearchImage: state.searchImage.data
+        dataSearchImage: state.searchImage.data,
+        loading: state.searchImage.loading
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getDataSearchImage: (valueSearch) => dispatch({ type: SEARCH_IMAGE_REQUEST, payload: valueSearch })
+        getDataSearchImage: (valueSearch) => dispatch({ type: SEARCH_IMAGE_REQUEST, payload: valueSearch }),
+        getDataSizeImage: () => dispatch({ type: GET_SIZE_IMAGE_REQUEST })
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
