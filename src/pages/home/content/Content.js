@@ -7,39 +7,46 @@ import {connect} from 'react-redux';
 import {GET_SIZE_IMAGE_REQUEST} from '../../../redux/actions/image/getSizeImage/actionType';
 
 class Content extends Component {
-    componentDidMount(){
-        const {dataSearchImage, getDataSizeImage} = this.props;
-        const idImage = dataSearchImage.photo
-        console.log(idImage)
-        getDataSizeImage()
-        console.log("asdas")
-    }
 
     render() {
         const {dataSearchImage, getDataSizeImage,loading} = this.props;
-        // var data = dataSearchImage.photos
-        // if(typeof(dataSearchImage.photos.photo) !== undefined){
-        //     console.log(data.photo)
-            
-            
-        // }else{
-        //     console.log('chua co')
-        // }
+        // console.log(dataSearchImage)
         
+        const itemImages = []
+        
+       
+        dataSearchImage.map(function(item, i){
+            let url = 'https://farm2.staticflickr.com/'
+            let id_data = item.id
+            url += item.server+'/'+id_data+'_'+item.secret+'_n.jpg'
+            let arr_child = {
+                id: id_data,
+                src: url
+            }
+            itemImages.push(arr_child)
+            
+        })
+        console.log(itemImages)
 
-        const items = (
-            Array.from(Array(5000), () => ({
-                id: i++,
-                src: randomChoice(Cat)
-            }))
-        );
+        const items = []
+
+        // const items = (
+        //     itemImages.map((item,index)=> {
+        //         Array.from(Array(5000), () => ({
+        //             id: item[0],
+        //             src: randomChoice(item[1])
+        //         }))
+        //     }) 
+        // );
+
+        // console.log(items)
 
         return (
             <div className="">
                 <div className="content-body">
                     <Masonry
                         // Provides the data for our grid items
-                        items={items}
+                        items={itemImages}
                         // Adds 8px of space between the grid cells
                         columnGutter={8}
                         // Sets the minimum column width to 172px
@@ -68,7 +75,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getDataSizeImage: () => dispatch({type:GET_SIZE_IMAGE_REQUEST})
+        getDataSizeImage: (dataSearchImage) => dispatch({type:GET_SIZE_IMAGE_REQUEST, payload:dataSearchImage})
     }
 }
 

@@ -36,7 +36,7 @@ class Header extends Component {
     }
 
     render() {
-        const { dataSearchImage,loading,getDataSizeImage } = this.props;
+        const { dataSearchImage,loading,getDataSizeImage ,dataSizeImage} = this.props;
         const {searchImage} = this.state
         // console.log("long test: ",loading)
 
@@ -95,7 +95,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         dataSearchImage: state.searchImage.data,
-        loading: state.searchImage.loading
+        loading: state.searchImage.loading,
+        dataSizeImage: state.getSizeImage.data,
     }
 }
 

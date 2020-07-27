@@ -7,8 +7,9 @@ import { SHOW_FORM_COMMENT } from '../../../../../redux/actions/showFormComment/
 
 class RightInfo extends Component {
     render() {
-        const { stateShowFormComment, toggleShowFormComment } = this.props;
-        const iconBtnComment = (stateShowFormComment? <i><FaChevronRight /></i>: <i><FaChevronDown /></i>)
+        const { stateShowFormComment, toggleShowFormComment, description, title, userName } = this.props;
+
+        const iconBtnComment = (stateShowFormComment ? <i><FaChevronRight /></i> : <i><FaChevronDown /></i>)
         return (
             <div className="col-lg-6 col-12 right-info">
                 <div className="save">
@@ -22,28 +23,53 @@ class RightInfo extends Component {
                         </div>
                     </a>
                 </div>
-                <a href="" className="upload">
-                    <i ><FaUpload /></i>
-                </a>
-                <div className="website">
-                    <a href="#" >
-                        sdzsafaripark.org
-                </a>
-                </div>
-                <div className="watch-live">
-                    <a href="#" >
-                        <h1>
-                            Watch Live Video of Tigers on Tiger Cam
-                    </h1>
+                <div>
+                    <a href="" className="upload">
+                        <i ><FaUpload /></i>
                     </a>
                 </div>
-                <p className="description">
-                    Enjoy watching live streaming video from Tull Family
-                    Tiger Trail at the San Diego Zoo Safari Park, as our
-                    Bengal and Sumatran tigers explore their forested surroundings
-                    and interact with each other. Don’t be surprised if you see these
-                    water-loving cats splashing in a pool or relaxing by a waterfall.
-                </p>
+                {/* detail image */}
+                <div>
+                    <div className="website">
+                        <a href="#" >
+                            {userName}
+                        </a>
+                    </div>
+                    <div className="watch-live">
+                        <a href="#" >
+                            <h1>
+                                {title}
+                            </h1>
+                        </a>
+                    </div>
+                    <p className="description">
+                        {description}
+                    </p>
+                </div>
+
+                <div>
+                    <div className="website">
+                        <a href="#" >
+                            sdzsafaripark.org
+         </a>
+                    </div>
+                    <div className="watch-live">
+                        <a href="#" >
+                            <h1>
+                                Watch Live Video of Tigers on Tiger Cam
+         </h1>
+                        </a>
+                    </div>
+                    <p className="description">
+                        {/* {dataInfoImage} */}
+                        {/* Enjoy watching live streaming video from Tull Family
+                        Tiger Trail at the San Diego Zoo Safari Park, as our
+                        Bengal and Sumatran tigers explore their forested surroundings
+                        and interact with each other. Don’t be surprised if you see these
+                        water-lovin
+                        g cats splashing in a pool or relaxing by a waterfall. */}
+                    </p>
+                </div>
                 <div>
                     <div className="btn-comment">
                         <button className="btn" onClick={toggleShowFormComment}>
@@ -52,7 +78,7 @@ class RightInfo extends Component {
                         </button>
                     </div>
                     <div>
-                        <div className={`${stateShowFormComment? "show-form-comment": "hide-form-comment"}`}>
+                        <div className={`${stateShowFormComment ? "show-form-comment" : "hide-form-comment"}`}>
                             <p className="title-share">
                                 Share feedback, ask a question or give a high five
                             </p>
@@ -97,7 +123,10 @@ class RightInfo extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        stateShowFormComment: state.showFormComment.state
+        stateShowFormComment: state.showFormComment.state,
+        description: state.infoImage.description,
+        title: state.infoImage.title,
+        userName: state.infoImage.userName
     }
 }
 

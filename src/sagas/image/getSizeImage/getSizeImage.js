@@ -8,9 +8,9 @@ export function* sizeImage(){
     yield takeLatest(GET_SIZE_IMAGE_REQUEST,sizeImageSaga)
 }
 
-const getSizeImage = () => {
+const getSizeImage = (dataSearchImage) => {
     
-    const linkGetSizeImage = `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${ApiKey}&photo_id=50135803268&format=json&nojsoncallback=1`
+    const linkGetSizeImage = `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${ApiKey}&photo_id=${dataSearchImage[0].id}&format=json&nojsoncallback=1`
 
     return axios({
         method: "GET",
@@ -23,7 +23,7 @@ const getSizeImage = () => {
 function* sizeImageSaga(getSizeImageAction) {
     try {
         const dataSizeImage = yield call(getSizeImage, getSizeImageAction.payload)
-        // console.log("tessadasd: ",dataSizeImage.sizes.size)
+        // console.log("tessadasd: ",dataSizeImage)
         yield put(getSizeImageSuccess(dataSizeImage))
     } catch (error) {
         yield put(getSizeImageError(error))

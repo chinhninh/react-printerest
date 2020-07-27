@@ -26,6 +26,7 @@ const searchImage = (state = dataSearchImage, action) => {
                 return {
                     ...state,
                     loading: false,
+                    data:null,
                     error: true
                 }    
         default:

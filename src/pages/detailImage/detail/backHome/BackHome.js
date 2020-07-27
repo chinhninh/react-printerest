@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import './BackHome.css';
 import { FaArrowLeft } from 'react-icons/fa'
-import {Link} from "react-router-dom";
+import {Link,withRouter} from "react-router-dom";
 
 class BackHome extends Component {
+
+    goBack = () => {
+        this.props.history.goBack();
+    }
+
     render() {
         return (
             <div className="col-lg-2 col-2 back-home">
                 <div>
-                <Link to="/">
+                <Link onClick={this.goBack.bind(this)}>
                         <i><FaArrowLeft /></i>
                         <span>For you</span>
                     </Link>
@@ -18,4 +23,4 @@ class BackHome extends Component {
     }
 }
 
-export default BackHome;
+export default withRouter(BackHome);
