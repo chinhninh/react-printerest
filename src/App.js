@@ -12,6 +12,7 @@ import {
   Link
 } from "react-router-dom";
 import {connect} from 'react-redux';
+import ScrollToTopRoute from './components/scrollToTopRoute/ScrollToTopRoute';
 
 class App extends Component {
   render() {
@@ -26,15 +27,15 @@ class App extends Component {
           <Header />
 
           <Switch>
-            <Route path="/detail-image">
+            <ScrollToTopRoute path="/detail-image">
               <DetailImage />
-            </Route>
-            <Route path="/search">
+            </ScrollToTopRoute>
+            <ScrollToTopRoute path="/search">
              {body}
-            </Route>
-            <Route path="/">
+            </ScrollToTopRoute>
+            <ScrollToTopRoute path="/">
              <div></div>
-            </Route>
+            </ScrollToTopRoute>
           </Switch>
 
         </div>
