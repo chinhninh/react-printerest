@@ -16,7 +16,7 @@ import {connect} from 'react-redux';
 class App extends Component {
   render() {
     const {dataSearchImage,loadingSearchImage} = this.props;
-    // console.log("loading: ",dataSearchImage)
+    console.log("loading: ",loadingSearchImage)
     const body = (
       loadingSearchImage ? <Loading/> : <Home />
     )
